@@ -69,7 +69,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           pythonSet = pythonSets.${system}.overrideScope editableOverlay;
-          virtualenv = pythonSet.mkVirtualEnv "IronKaggleProject-dev-env" workspace.deps.all;
+          virtualenv = pythonSet.mkVirtualEnv "dev-env" workspace.deps.all;
         in
         {
           default = pkgs.mkShell {
@@ -98,7 +98,7 @@
       );
 
       packages = forAllSystems (system: {
-        default = pythonSets.${system}.mkVirtualEnv "IronKaggleProject-env" workspace.deps.default;
+        default = pythonSets.${system}.mkVirtualEnv "env" workspace.deps.default;
       });
     };
 }
